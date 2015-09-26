@@ -9,8 +9,7 @@ filename <- "getdata_projectfiles_UCI HAR Dataset.zip"
  if (!file.exists("UCI HAR Dataset")) {  
    unzip(filename)  
  } 
- 
- 
+  
  # Load activity labels + features 
  activityLabels <- read.table("UCI HAR Dataset/activity_labels.txt") 
  activityLabels[,2] <- as.character(activityLabels[,2]) 
@@ -42,8 +41,7 @@ filename <- "getdata_projectfiles_UCI HAR Dataset.zip"
  # turn activities & subjects into factors 
  allData$activity <- factor(allData$activity, levels = activityLabels[,1], labels = activityLabels[,2]) 
  allData$subject <- as.factor(allData$subject) 
- 
- 
+  
  allData.melted <- melt(allData, id = c("subject", "activity")) 
  allData.mean <- dcast(allData.melted, subject + activity ~ variable, mean) 
  
